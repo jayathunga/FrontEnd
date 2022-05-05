@@ -1,0 +1,60 @@
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Task page</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i></button>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Create task</h4>
+                <hr />
+                <div class="well">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" name="name" class="form-control form-control-lg rounded-0"
+                                placeholder="name" [(ngModel)]="taskObject.name">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <input type="text" name="description" class="form-control form-control-lg rounded-0"
+                                placeholder="discription" [(ngModel)]="taskObject.description">
+                        </div>
+                        <div class="form-group">
+                            <label>Customer:</label>
+                            <select class="form-control form-control-lg rounded-0" name="customer">
+                                <option *ngFor="let item of customers" value="item.id">
+                                    {{item.name}}</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" (click)="saveTaskData()">Save</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <h4>Task List</h4>
+        <hr />
+        <div *ngFor="let item of tasks" class="alert alert-info">
+            <h3>{{item.name}}</h3>
+            <p>{{item.description}}</p>
+            <p>{{item.customer.name}}</p>
+            <p>{{item.customer.email}}</p>
+            <button (click)="complete(item)" class="btn btn-success">Complete</button>
+            <button (click)="edit(item.id)" class="btn btn-success">Update</button>
+            <button (click)="deleteTaskData(item.id)" class="btn btn-success">Delete</button>
+        </div>
+    </div>
+
+
+
+</div>
